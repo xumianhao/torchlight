@@ -559,7 +559,7 @@ Run:
 
 ```powershell
 $nonTemplates = Get-ChildItem -Recurse -Filter '*.md' |
-  Where-Object { $_.FullName -notmatch '[\\/]templates[\\/]' -and $_.FullName -notmatch '[\\/]docs[\\/]superpowers[\\/]' }
+  Where-Object { $_.FullName -notmatch '[\\/]templates[\\/]' -and $_.FullName -notmatch '[\\/]docs[\\/]superpowers[\\/]' -and $_.FullName -notmatch '[\\/]\.superpowers[\\/]' }
 $hits = $nonTemplates | Select-String -Pattern '\b(TODO|TBD)\b|待定|稍后补充'
 if ($hits) { $hits | ForEach-Object { $_.ToString() }; throw '发现未解决的编写标记' }
 ```
@@ -572,7 +572,7 @@ Run:
 
 ```powershell
 $files = Get-ChildItem -Recurse -Filter '*.md' |
-  Where-Object { $_.FullName -notmatch '[\\/]docs[\\/]superpowers[\\/]' }
+  Where-Object { $_.FullName -notmatch '[\\/]docs[\\/]superpowers[\\/]' -and $_.FullName -notmatch '[\\/]\.superpowers[\\/]' }
 $currentSeasonPatterns = '当前赛季为|本赛季最强|当前版本伤害|现版本价格'
 $claims = $files | Select-String -Pattern $currentSeasonPatterns
 if ($claims) { $claims | ForEach-Object { $_.ToString() }; throw '脚手架包含未经研究的当前赛季结论' }
