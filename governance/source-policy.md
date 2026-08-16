@@ -21,7 +21,7 @@
 
 ## 最小来源记录
 
-每条来源必须与 `templates/source-record.md` 的最小字段语义一致，且不得省略以下信息：
+本节即为来源记录的锁定字段接口；后续模板和工具必须完整实现以下字段语义，且不得省略：
 
 - `record_id`（`SRC-YYYYMMDD-NNN`）
 - `title_or_description`
